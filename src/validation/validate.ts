@@ -1,0 +1,7 @@
+import type {PlanIR} from '../types.js';
+export interface Validation {complete:boolean;errors:string[];warnings:string[];stats:Record<string,number>}
+export function validateIR(ir:PlanIR):Validation {const errors=[...ir.diagnostics],warnings:string[]=[]; const stageIds=new Set<string>(),domainIds=new Set<string>(),compIds=new Set<string>(); let variants=0,unparsed=0;
+ if(!ir.stages.length)errors.push('Plan has no parsed stages');
+ for(const s of ir.stages){if(stageIds.has(s.id))errors.push(`Duplicate stage ${s.id}`);stageIds.add(s.id); if(!s.domains.length)errors.push(`Stage ${s.id} has no domains`); for(const d of s.domains){if(domainIds.has(d.id))errors.push(`Duplicate domain ${d.id}`);domainIds.add(d.id); if(d.kind==='competency' && !d.competencies.length)errors.push(`Domain ${d.id} has no parsed competencies`); unparsed+=d.unparsed.length; for(const u of d.unparsed)errors.push(`${d.id}: ${u}`); for(const c of d.competencies){const id=`${d.id}.${c.number}`; if(compIds.has(id))errors.push(`Duplicate competency ${id}`);compIds.add(id); if(!c.variants.length)errors.push(`${id} has no variants`); variants+=c.variants.length;}}}
+ for(const p of ir.processDomains){if(!p.competencies.length)warnings.push(`Process domain ${p.id} has no parsed competencies`); unparsed+=p.unparsed.length;}
+ return {complete:errors.length===0,errors,warnings,stats:{pages:ir.sourcePages.length,process_domains:ir.processDomains.length,stages:ir.stages.length,domains:domainIds.size,competencies:compIds.size,variants,unparsed_blocks:unparsed}};}

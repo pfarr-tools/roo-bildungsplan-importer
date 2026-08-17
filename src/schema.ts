@@ -1,0 +1,1 @@
+export const educationPlanSchema={type:'object',required:['schema_version','type','metadata','process_competencies','stages'],properties:{schema_version:{const:'2.0.0'},type:{const:'education_plan'},metadata:{type:'object'},process_competencies:{type:'array'},stages:{type:'array'}},additionalProperties:true} as const;

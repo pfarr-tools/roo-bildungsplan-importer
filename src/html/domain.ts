@@ -1,0 +1,17 @@
+import * as cheerio from 'cheerio'; import {cleanText,parseNumberedTitle} from '../util/text.js'; import {referencesFromElement,referencesFromText} from './references.js'; import type {DomainIR,CompetencyIR,VariantIR} from '../types.js';
+function stripNumber(s:string){return cleanText(s.replace(/^\(\s*\d+\s*\)\s*/,''))}
+function num(s:string){const m=cleanText(s).match(/^\(\s*(\d+)\s*\)/); return m?+m[1]:null}
+export function parseDomainPage(html:string,url:string,expectedId:string,expectedTitle:string):DomainIR { const $=cheerio.load(html); const main=$('main').length?$('main'):$('body'); const hs=main.find('h1,h2,h3,h4').filter((_,x)=>cleanText($(x).text()).startsWith(expectedId)); const heading=hs.last(); const nt=parseNumberedTitle(heading.text()); const title=nt?.title??expectedTitle; // CMS layouts place the competency table outside the heading's immediate parent.
+  const kind:'note'|'competency'= /\.0$/.test(expectedId)?'note':'competency'; const scope=main; const content=heading.closest('.itk_header').length?heading.closest('.itk_header'):heading.parent(); let intro:string|null=null; const firstP=content.find('p').first(); if(firstP.length) intro=cleanText(firstP.text())||null;
+  const byNum=new Map<number,CompetencyIR>(); const notes:string[]=[]; const unparsed:string[]=[];
+  const tables=scope.filter('table').add(scope.find('table')).filter((_,table)=>/\(\s*\d+\s*\)/.test($(table).text()));
+  tables.each((_,table)=>{ const headers=$(table).find('tr').first().find('th,td').map((_,c)=>cleanText($(c).text())).get(); const levels=headers.map(h=>/^[GME]$/.test(h)?h:null); const isLevels=levels.some(Boolean);
+    $(table).find('tr').slice(1).each((_,tr)=>{ const cells=$(tr).find('th,td').map((_,c)=>cleanText($(c).text())).get(); if(!cells.length)return; if(isLevels){ cells.forEach((cell,i)=>{const n=num(cell); if(n===null)return; const v:VariantIR={level:levels[i]??null,text:stripNumber(cell),references:referencesFromText(cell),raw:cell}; const cur=byNum.get(n)??{number:n,variants:[],sourceRaw:''}; cur.variants.push(v); cur.sourceRaw+=(cur.sourceRaw?' | ':'')+cell; byNum.set(n,cur);}); }
+      else { let found=false; cells.forEach(cell=>{const n=num(cell); if(n!==null){found=true; const v={level:null,text:stripNumber(cell),references:referencesFromText(cell),raw:cell}; const cur=byNum.get(n)??{number:n,variants:[],sourceRaw:''}; cur.variants.push(v); cur.sourceRaw+=(cur.sourceRaw?' | ':'')+cell; byNum.set(n,cur);}}); if(!found){const text=cleanText(cells.join(' | ')); if(text && !/Teilkompetenzen|Denkanstöße|Schülerinnen und Schüler können/i.test(text))notes.push(text);} }
+    });
+  });
+  // Fallback for CMS renderings where competence rows are not actual HTML tables.
+  if(!byNum.size){ scope.find('p,li,div').each((_,el)=>{const t=cleanText($(el).text()); const n=num(t); if(n!==null && t.length<1500){const cur=byNum.get(n)??{number:n,variants:[],sourceRaw:''}; if(!cur.variants.some(v=>v.raw===t))cur.variants.push({level:null,text:stripNumber(t),references:referencesFromElement($,el),raw:t}); cur.sourceRaw=t; byNum.set(n,cur);}}); }
+  const allText=cleanText(scope.text()); if(/\(\s*1\s*\)/.test(allText) && !byNum.size) unparsed.push('Competency-like numbered content found but no competencies parsed');
+  if(kind==='note' && intro) notes.unshift(intro);
+  return {id:expectedId,title,kind,introduction:intro,competencies:[...byNum.values()].sort((a,b)=>a.number-b.number),notesRaw:notes,references:referencesFromText(allText),sourceRaw:allText,sourceUrl:url,unparsed}; }

@@ -1,0 +1,8 @@
+import * as cheerio from 'cheerio'; import {cleanText,parseNumberedTitle} from '../util/text.js'; import {referencesFromElement} from './references.js'; import type {ProcessDomainIR} from '../types.js';
+export function parseProcessPage(html:string,url:string,expectedId:string,expectedTitle:string):ProcessDomainIR { const $=cheerio.load(html); const main=$('main').length?$('main'):$('body'); const heading=main.find('h1,h2,h3').filter((_,x)=>cleanText($(x).text()).startsWith(expectedId)).last(); const title=parseNumberedTitle(heading.text())?.title??expectedTitle; const comps:any[]=[];
+  const content=heading.length?heading.closest('.text').add(heading.closest('.text').nextAll('section').first()):main;
+  const add=(number:number,text:string,el:any)=>{if(!text||comps.some(x=>x.number===number))return; comps.push({id:`${expectedId}.${number}`,number,text,references:referencesFromElement($,el)});};
+  content.find('.teilkompetenzNumber').each((_,numberEl)=>{const number=Number.parseInt(cleanText($(numberEl).text()),10); const cell=$(numberEl).closest('td'); const text=cleanText(cell.find('.teilkompetenzText').text()); if(Number.isFinite(number))add(number,text,cell);});
+  const scope=content.length?content:main.children(); if(!comps.length) scope.find('li').each((_,li)=>{const t=cleanText($(li).clone().children('ul,ol').remove().end().text()); if(!t||t.startsWith(expectedId))return; add(comps.length+1,t,li);});
+  if(!comps.length){ scope.find('p').each((_,p)=>{const t=cleanText($(p).text()); if(t && !/^2\.\d+/.test(t)) add(comps.length+1,t,p);}); }
+  return {id:expectedId,title,competencies:comps.sort((a,b)=>a.number-b.number),sourceUrl:url,sourceRaw:cleanText(content.text()),unparsed:[]}; }

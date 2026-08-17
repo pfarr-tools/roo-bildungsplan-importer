@@ -1,0 +1,2 @@
+import {mkdir,readFile,writeFile} from 'node:fs/promises'; import {join} from 'node:path'; import {sha256} from '../util/hash.js';
+export class HtmlCache { constructor(public dir:string){} async get(url:string){try{return await readFile(join(this.dir,sha256(url)+'.html'),'utf8')}catch{return null}} async put(url:string,html:string){await mkdir(this.dir,{recursive:true}); await writeFile(join(this.dir,sha256(url)+'.html'),html)} }

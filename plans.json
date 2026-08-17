@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Bildungspläne Baden-Württemberg für REV, RRK und RSYR; alle berücksichtigten Schularten sowie Gymnasium V3.0.",
+  "plans": [
+    {
+      "plan_code": "BP2016BW_ALLG_GS_REV",
+      "school_type": "GS",
+      "school_type_label": "Grundschule",
+      "subject_code": "REV",
+      "subject": "Evangelische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GS_REV"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GS_RRK",
+      "school_type": "GS",
+      "school_type_label": "Grundschule",
+      "subject_code": "RRK",
+      "subject": "Katholische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GS_RRK"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GS_RSYR",
+      "school_type": "GS",
+      "school_type_label": "Grundschule",
+      "subject_code": "RSYR",
+      "subject": "Syrisch-Orthodoxe Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GS_RSYR"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_SEK1_REV",
+      "school_type": "SEK1",
+      "school_type_label": "Sekundarstufe I",
+      "subject_code": "REV",
+      "subject": "Evangelische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_SEK1_REV"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_SEK1_RRK",
+      "school_type": "SEK1",
+      "school_type_label": "Sekundarstufe I",
+      "subject_code": "RRK",
+      "subject": "Katholische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_SEK1_RRK"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_SEK1_RSYR",
+      "school_type": "SEK1",
+      "school_type_label": "Sekundarstufe I",
+      "subject_code": "RSYR",
+      "subject": "Syrisch-Orthodoxe Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_SEK1_RSYR"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GYM_REV",
+      "school_type": "GYM",
+      "school_type_label": "Gymnasium",
+      "subject_code": "REV",
+      "subject": "Evangelische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GYM_REV"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GYM_RRK",
+      "school_type": "GYM",
+      "school_type_label": "Gymnasium",
+      "subject_code": "RRK",
+      "subject": "Katholische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GYM_RRK"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GYM_RSYR",
+      "school_type": "GYM",
+      "school_type_label": "Gymnasium",
+      "subject_code": "RSYR",
+      "subject": "Syrisch-Orthodoxe Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GYM_RSYR"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GMSO_REV",
+      "school_type": "GMSO",
+      "school_type_label": "Gemeinschaftsschule Oberstufe",
+      "subject_code": "REV",
+      "subject": "Evangelische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GMSO_REV"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GMSO_RRK",
+      "school_type": "GMSO",
+      "school_type_label": "Gemeinschaftsschule Oberstufe",
+      "subject_code": "RRK",
+      "subject": "Katholische Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GMSO_RRK"
+    },
+    {
+      "plan_code": "BP2016BW_ALLG_GMSO_RSYR",
+      "school_type": "GMSO",
+      "school_type_label": "Gemeinschaftsschule Oberstufe",
+      "subject_code": "RSYR",
+      "subject": "Syrisch-Orthodoxe Religionslehre",
+      "version": "V1",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GMSO_RSYR"
+    },
+    {
+      "plan_code": "DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_REV(V3.0)",
+      "school_type": "GYM",
+      "school_type_label": "Gymnasium",
+      "subject_code": "REV",
+      "subject": "Evangelische Religionslehre",
+      "version": "V3.0",
+      "version_date": "2026-05-21",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_REV(V3.0)"
+    },
+    {
+      "plan_code": "DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_RRK(V3.0)",
+      "school_type": "GYM",
+      "school_type_label": "Gymnasium",
+      "subject_code": "RRK",
+      "subject": "Katholische Religionslehre",
+      "version": "V3.0",
+      "version_date": "2026-05-21",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_RRK(V3.0)"
+    },
+    {
+      "plan_code": "DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_RSYR(V3.0)",
+      "school_type": "GYM",
+      "school_type_label": "Gymnasium",
+      "subject_code": "RSYR",
+      "subject": "Syrisch-Orthodoxe Religionslehre",
+      "version": "V3.0",
+      "version_date": "2026-05-21",
+      "url": "https://www.bildungsplaene-bw.de/,Lde/DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_RSYR(V3.0)"
+    },
+    {
+          "plan_code": "BP2016BW_ALLG_GS_RAK",
+          "school_type": "GS",
+          "school_type_label": "Grundschule",
+          "subject_code": "RAK",
+          "subject": "Altkatholische Religionslehre",
+          "denomination": "old_catholic",
+          "version": "V1",
+          "version_date": "2016-03-23",
+          "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GS_RAK"
+        },
+        {
+          "plan_code": "BP2016BW_ALLG_SEK1_RAK",
+          "school_type": "SEK1",
+          "school_type_label": "Sekundarstufe I",
+          "subject_code": "RAK",
+          "subject": "Altkatholische Religionslehre",
+          "denomination": "old_catholic",
+          "version": "V1",
+          "version_date": "2016-03-23",
+          "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_SEK1_RAK"
+        },
+        {
+          "plan_code": "BP2016BW_ALLG_GYM_RAK",
+          "school_type": "GYM",
+          "school_type_label": "Gymnasium",
+          "subject_code": "RAK",
+          "subject": "Altkatholische Religionslehre",
+          "denomination": "old_catholic",
+          "version": "V1",
+          "version_date": "2016-03-23",
+          "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GYM_RAK"
+        },
+        {
+          "plan_code": "DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_RAK(V3.0)",
+          "school_type": "GYM",
+          "school_type_label": "Gymnasium",
+          "subject_code": "RAK",
+          "subject": "Altkatholische Religionslehre",
+          "denomination": "old_catholic",
+          "version": "V3.0",
+          "version_date": "2026-05-21",
+          "url": "https://www.bildungsplaene-bw.de/,Lde/DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_RAK(V3.0)"
+        },
+        {
+          "plan_code": "BP2016BW_ALLG_GMSO_RAK",
+          "school_type": "GMSO",
+          "school_type_label": "Gemeinschaftsschule Oberstufe",
+          "subject_code": "RAK",
+          "subject": "Altkatholische Religionslehre",
+          "denomination": "old_catholic",
+          "version": "V1",
+          "version_date": "2016-03-23",
+          "url": "https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GMSO_RAK"
+        }
+  ]
+}
